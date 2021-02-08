@@ -23,7 +23,36 @@ namespace BankingApp.Helpers
             }
             return new List<string>( newLines); 
         }
+        public static List<Transaction> FindLargest(List<Transaction> TransactionList)
+        {
+            List<Transaction> largestTransactions = new List<Transaction>();
 
-        
+            var tr = TransactionList.Max(x => x.Amount);
+            foreach(var transaction in TransactionList)
+            {
+                if(transaction.Amount == tr)
+                {
+                    largestTransactions.Add(transaction);
+                }
+            }
+
+            return new List<Transaction>(largestTransactions);
+        }
+        public static List<Transaction> FindSmallest(List<Transaction> TransactionList)
+        {
+            List<Transaction> smallestTransactions = new List<Transaction>();
+
+            var tr = TransactionList.Min(x => x.Amount);
+            foreach(var transaction in TransactionList)
+            {
+                if(transaction.Amount == tr)
+                {
+                    smallestTransactions.Add(transaction);
+                }
+            }
+
+            return new List<Transaction>(smallestTransactions);
+        }
+
     }
 }
